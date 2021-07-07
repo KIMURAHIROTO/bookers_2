@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
   
+  devise_for :users
   resources :users do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
@@ -13,5 +13,6 @@ Rails.application.routes.draw do
     resources :book_comments, only: [:create, :destroy]
   end
   get 'home/about'=> 'homes#about'
-
+  
+  get '/search' => 'search#search'
 end
